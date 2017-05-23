@@ -1,0 +1,165 @@
+<html class="no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript" src="/js/app.js" th:src="@{/js/app.js}"></script>
+<script type="text/javascript" src="/js/pages/DepartamentoValidator.js"></script>
+</head>
+<body>
+	<div th:fragment="content">
+		<div class="notifications top-rigth"></div>
+		<div id="page-content">
+			<div class="content-header">
+				<div class="header-section">
+					<h1>Formulario de empleado</h1>
+				</div>
+				<div class="row">
+					<form id="formempleado" class="form-horizontal form-bordered"
+						th:object="${empleado}" method="post"
+						th:action="@{/empleados/guardar}">
+						<input type="hidden" th:field="${empleado.Id}" />
+						<div class="col-md-12">
+							<!-- Basic Form Elements Block -->
+							<div class="block" style="margin-left: 20px !important;">
+								<!-- Basic Form Elements Title -->
+								<div class="block-title">
+									<div class="block-options pull-right"></div>
+									<h2>
+										<strong>Datos B&aacute;sicos</strong>
+									</h2>
+								</div>
+									
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-3 control-label">Nombre</label>
+										<div class="col-md-9">
+											<input type="text" id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Nombre" th:field="${empleado.Nombre}" />
+												<span th:if="${#fields.hasErrors('Nombre')}" th:errors="*{Nombre}">Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Apellido</label>
+										<div class="col-md-9">
+											<input type="text" id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Apellido" th:field="${empleado.Apellido}" />
+											<span th:if="${#fields.hasErrors('Apellido')}" th:errors="*{Apellido}">Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Email</label>
+										<div class="col-md-9">
+											<input type="text" id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Email" th:field="${empleado.Email}" />
+												<span th:if="${#fields.hasErrors('Email')}" th:errors="*{Email}">Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Direccion</label>
+										<div class="col-md-9">
+											<textarea id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Direccion" th:field="${empleado.Direccion}" ></textarea>
+												<span th:if="${#fields.hasErrors('Direccion')}" th:errors="*{Direccion}">Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Celular</label>
+										<div class="col-md-9">
+
+												<input type="text" th:field="${empleado.Celular}" class="form-control phoneNumber" placeholder="(999) 999-9999"/>
+												<span th:if="${#fields.hasErrors('Celular')}" th:errors="*{Celular}">Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Fecha Ingreso</label>
+										<div class="col-md-9">
+
+											<input th:field="${empleado.FechaIngreso}" type="text" 
+											id="example-datepicker" name="example-datepicker" 
+											class="form-control input-datepicker" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy"/>
+											<span th:if="${#fields.hasErrors('FechaIngreso')}" th:errors="*{FechaIngreso}">Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Fecha Nacimiento</label>
+										<div class="col-md-9">
+											<input th:field="${empleado.FechaCumpleano}" type="text" 
+											id="example-datepicker" name="example-datepicker" 
+											class="form-control input-datepicker" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy"/>
+											
+											<span th:if="${#fields.hasErrors('FechaCumpleano')}" th:errors="*{FechaCumpleano}">Departamento Error</span>
+										</div>
+									</div>
+	
+									<div class="form-group">
+										<label class="col-md-3 control-label">Salario</label>
+										<div class="col-md-9">
+											<input type="number" id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Salario Maximo" th:field="${empleado.Salario}" />
+												<span th:if="${#fields.hasErrors('Salario')}" th:errors="*{Salario}">Departamento Error</span>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-md-3 control-label">Puesto</label>
+										<div class="col-md-9">
+
+											<select th:field="${empleado.PuestoId}" class="select-chosen">
+												<option value="0">Seleccione</option>
+												<option th:each="puesto : ${puestos}"
+														th:value="${puesto.Id}" th:text="${puesto.Nombre}" />
+											</select>
+											<span th:if="${#fields.hasErrors('PuestoId')}" th:errors="*{PuestoId}">Departamento Error</span>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-md-3 control-label">Departamento</label>
+										<div class="col-md-9">
+
+											<select th:field="${empleado.DepartamentoId}" onchange="mostrarColumnas(this.value)" class="select-chosen">
+												<option value="0">Seleccione</option>
+												<option th:each="entry : ${departamentos}"
+														th:value="${entry.Id}" th:text="${entry.Nombre}" />
+											</select>
+											<span th:if="${#fields.hasErrors('DepartamentoId')}" th:errors="*{DepartamentoId}">Departamento Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Supervisor</label>
+										<div class="col-md-9">
+
+											<select th:field="${empleado.Supervisor}" onchange="mostrarColumnas(this.value)" class="select-chosen">
+												<option value="0">Seleccione</option>
+												<option th:each="entry : ${empleados}"
+														th:value="${entry.Id}" th:text="${entry.Nombre}" />
+											</select>
+											<span th:if="${#fields.hasErrors('Supervisor')}" th:errors="*{Supervisor}">Departamento Error</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group form-actions"
+									style="margin-left: 20px !important;">
+									<div class="col-md-9 col-md-offset-3">
+										<button id="guardar" type="submit"
+											class="btn btn-sm btn-primary">
+											<i class="fa fa-angle-right"></i> Guardar
+										</button>
+										<a class="btn btn-sm btn-warning" th:href="@{/empleados}"><i
+											class="fa fa-repeat"></i> Salir</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

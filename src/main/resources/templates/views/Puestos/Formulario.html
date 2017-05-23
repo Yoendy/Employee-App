@@ -1,0 +1,88 @@
+<html class="no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript" src="/js/app.js" th:src="@{/js/app.js}"></script>
+</head>
+<body>
+	<div th:fragment="content">
+		<div class="notifications top-rigth"></div>
+		<div id="page-content">
+			<div class="content-header">
+				<div class="header-section">
+					<h1>Formulario de puesto</h1>
+				</div>
+				<div class="row">
+					<form id="formpuesto" class="form-horizontal form-bordered"
+						th:object="${puesto}" method="post"
+						th:action="@{/puestos/guardar}">
+						<input type="hidden" th:field="${puesto.Id}" />
+						<div class="col-md-12">
+							<!-- Basic Form Elements Block -->
+							<div class="block" style="margin-left: 20px !important;">
+								<!-- Basic Form Elements Title -->
+								<div class="block-title">
+									<div class="block-options pull-right"></div>
+									<h2>
+										<strong>Datos B&aacute;sicos</strong>
+									</h2>
+								</div>
+									
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-3 control-label">Nombre</label>
+										<div class="col-md-9">
+											<input type="text" id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Nombre" th:field="${puesto.Nombre}" />
+												<span th:if="${#fields.hasErrors('Nombre')}" th:errors="*{Nombre}">Puesto Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Descripcion</label>
+										<div class="col-md-9">
+											<input type="text" id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Descripcion" th:field="${puesto.Descripcion}" />
+												<span th:if="${#fields.hasErrors('Descripcion')}" th:errors="*{Descripcion}">Puesto Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Salario Minimo</label>
+										<div class="col-md-9">
+											<input type="number" id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Salario Minimo" th:field="${puesto.SalarioMinimo}" />
+												<span th:if="${#fields.hasErrors('SalarioMinimo')}" th:errors="*{SalarioMinimo}">Puesto Error</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Salario Maximo</label>
+										<div class="col-md-9">
+											<input type="number" id="example-text-input-1"
+												name="example-text-input" class="form-control"
+												placeholder="Salario Maximo" th:field="${puesto.SalarioMaximo}" />
+												<span th:if="${#fields.hasErrors('SalarioMaximo')}" th:errors="*{SalarioMaximo}">Puesto Error</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group form-actions"
+									style="margin-left: 20px !important;">
+									<div class="col-md-9 col-md-offset-3">
+										<button id="guardar" type="submit"
+											class="btn btn-sm btn-primary">
+											<i class="fa fa-angle-right"></i> Guardar
+										</button>
+										<a class="btn btn-sm btn-warning" th:href="@{/puestos}"><i
+											class="fa fa-repeat"></i> Salir</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
