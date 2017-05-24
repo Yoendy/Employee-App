@@ -3,13 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.softtours</groupId>
-	<artifactId>SoftTours</artifactId>
+	<groupId>com.Sistema_Empleados</groupId>
+	<artifactId>Sistema_Empleados</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>SoftTours</name>
-	<description>Proyecto de Agencia de Tours</description>
+	<name>Sistema_Empleados</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -119,11 +118,18 @@
 			<artifactId>poi</artifactId>
 			<version>3.16</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.16</version>
 		</dependency>
+		
+		<dependency>
+  			<groupId>commons-logging</groupId>
+  			<artifactId>commons-logging</artifactId>
+  			<version>1.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
