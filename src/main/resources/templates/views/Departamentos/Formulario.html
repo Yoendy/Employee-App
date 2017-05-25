@@ -58,6 +58,12 @@
 											<span th:if="${#fields.hasErrors('EncargadoId')}" th:errors="*{EncargadoId}">Departamento Error</span>
 										</div>
 									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Estado</label>
+										<div class="col-md-9">
+											<label class="switch switch-primary"><input type="checkbox" th:checked="${departamento.Estado}"/><span></span></label>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">

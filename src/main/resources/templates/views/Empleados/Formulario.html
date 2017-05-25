@@ -140,6 +140,12 @@
 											<span th:if="${#fields.hasErrors('Supervisor')}" th:errors="*{Supervisor}">Departamento Error</span>
 										</div>
 									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">Estado</label>
+										<div class="col-md-9">
+											<label class="switch switch-primary"><input type="checkbox" th:checked="${empleado.Estado}"/><span></span></label>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
