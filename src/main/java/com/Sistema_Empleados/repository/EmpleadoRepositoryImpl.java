@@ -89,7 +89,6 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository
 		
 		int id = count()+1;
 		modelo.setId(id);
-		modelo.setEstado(true);
 		insert(modelo,count());
 	}
 

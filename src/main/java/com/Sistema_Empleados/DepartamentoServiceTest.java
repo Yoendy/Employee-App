@@ -4,6 +4,7 @@ import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
 import com.Sistema_Empleados.domain.Departamento;
+import com.Sistema_Empleados.repository.DepartamentoRepositoryImpl;
 import com.Sistema_Empleados.service.DepartamentoService;
 import com.Sistema_Empleados.service.DepartamentoServiceImpl;
 
@@ -16,7 +17,7 @@ public class DepartamentoServiceTest {
 	@org.junit.Test
 	public void Guardar() 
 	{
-		departamentoService = new DepartamentoServiceImpl();
+		departamentoService = new DepartamentoServiceImpl(new DepartamentoRepositoryImpl());
 		
 		
 		Departamento departamento = new Departamento();

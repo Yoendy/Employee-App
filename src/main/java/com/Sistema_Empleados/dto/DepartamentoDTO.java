@@ -20,7 +20,7 @@ public class DepartamentoDTO {
 	
 	public DepartamentoDTO( String Nombre, String Descripcion, Empleado Encargado)
 	{
-		String encargado = Encargado.equals(null) ? "N/A" : Encargado.getNombre() +""+ Encargado.getApellido();
+		String encargado = Encargado == null ? "N/A" : Encargado.getNombre() +""+ Encargado.getApellido();
 		this.Nombre = Nombre;
 		this.Descripcion = Descripcion;
 		this.setEncargado(encargado);
