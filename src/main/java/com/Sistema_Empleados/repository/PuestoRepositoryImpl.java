@@ -72,7 +72,6 @@ public class PuestoRepositoryImpl implements PuestoRepository
 		
 		int id = count()+1;
 		modelo.setId(id);
-		modelo.setEstado(true);
 		insert(modelo,count());
 	}
 

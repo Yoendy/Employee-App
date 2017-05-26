@@ -15,15 +15,13 @@ import com.Sistema_Empleados.domain.Puesto;
 import com.Sistema_Empleados.dto.DepartamentoDTO;
 import com.Sistema_Empleados.dto.EmpleadoDTO;
 import com.Sistema_Empleados.dto.PuestoDTO;
+import com.Sistema_Empleados.repository.DepartamentoRepositoryImpl;
 import com.Sistema_Empleados.repository.EmpleadoRepository;
-import com.Sistema_Empleados.repository.EmpleadoRepositoryImpl;
-import com.Sistema_Empleados.util.DepartamentoWriter;
+import com.Sistema_Empleados.repository.PuestoRepositoryImpl;
 import com.Sistema_Empleados.util.EmpleadoWriter;
 
-import scala.Console;
-
 @Service
-public class EmpleadoServiceImpl implements EmpleadoService{
+public class EmpleadoServiceImpl extends GenericServiceImpl<Empleado> implements EmpleadoService{
 	Empleado empleado;
 	
 
@@ -31,50 +29,15 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 	private PuestoService puestoService;
 	private DepartamentoService departamentoService;
 	
-	public EmpleadoServiceImpl(){
-		this.empleadoRepository = new EmpleadoRepositoryImpl();
-		this.departamentoService = new DepartamentoServiceImpl();
-		this.puestoService = new PuestoServiceImpl();
+	@Autowired
+	public EmpleadoServiceImpl(EmpleadoRepository empleadoRepository){
+		super(empleadoRepository);
+		this.empleadoRepository = empleadoRepository;
+		this.departamentoService = new DepartamentoServiceImpl(new DepartamentoRepositoryImpl());
+		this.puestoService = new PuestoServiceImpl(new PuestoRepositoryImpl());
 		
 	}
-
-	@Override
-	public List<Empleado> findAll() {
-		return empleadoRepository.findAll();
-	}
-
-	@Override
-	public void save(Empleado puesto) {
-		empleadoRepository.save(puesto);
-	}
-
-	@Override
-	public void update(Empleado puesto) {
-		empleadoRepository.update(puesto);
-		
-	}
-
-	@Override
-	public Empleado findOne(int id) {
-		return empleadoRepository.findOne(id);
-	}
-
-	@Override
-	public void delete(int id) {
-		empleadoRepository.delete(id);
-		
-	}
-
-	@Override
-	public boolean exist(int id) {
-		return empleadoRepository.exist(id);
-	}
-
-	@Override
-	public List<Empleado> searchAll(String filtro) {
-		return empleadoRepository.searchAll(filtro);
-	}
-
+	
 	@Override
 	public List<DepartamentoDTO> findAllEmpleadosByDepartamento() {
 

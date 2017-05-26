@@ -9,70 +9,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Sistema_Empleados.domain.Departamento;
+import com.Sistema_Empleados.domain.Puesto;
 import com.Sistema_Empleados.dto.DepartamentoDTO;
 import com.Sistema_Empleados.repository.DepartamentoRepository;
 import com.Sistema_Empleados.repository.DepartamentoRepositoryImpl;
+import com.Sistema_Empleados.repository.EmpleadoRepositoryImpl;
+import com.Sistema_Empleados.repository.GenericRepository;
+import com.Sistema_Empleados.repository.PuestoRepositoryImpl;
 import com.Sistema_Empleados.util.DepartamentoWriter;
 import com.Sistema_Empleados.util.PuestoWriter;
 
 
 @Service
-public class DepartamentoServiceImpl implements DepartamentoService {
+public class DepartamentoServiceImpl extends GenericServiceImpl<Departamento> implements DepartamentoService {
 
 	Departamento departamento;
 	
-	private DepartamentoRepository departamentoRepository;	
+	
+	private GenericRepository<Departamento> departamentoRepository;
 
-	public DepartamentoServiceImpl()
+
+	@Autowired
+	public DepartamentoServiceImpl(GenericRepository<Departamento> departamentoRepository)
 	{
-		this.departamentoRepository = new DepartamentoRepositoryImpl();
-	
+		super(departamentoRepository);
+		this.departamentoRepository = departamentoRepository;
 	}
 	
-	@Override
-	public List<Departamento> findAll() {
-
-		return departamentoRepository.findAll();
-	}
-
-	@Override
-	public void save(Departamento departamento) {
-		
-		departamentoRepository.save(departamento);
-	}
-
-	@Override
-	public void update(Departamento departamento){
-
-		departamentoRepository.update(departamento);
-	}
-
-	@Override
-	public Departamento findOne(int id) {
-
-		return departamentoRepository.findOne(id);
-	}
-
-	@Override
-	public void delete(int id){
-
-		departamentoRepository.delete(id);
-	}
-
-	@Override
-	public boolean exist(int id) {
-		return departamentoRepository.exist(id);
-	}
-
-	@Override
-	public List<Departamento> searchAll(String filtro) {
-
-		return departamentoRepository.searchAll(filtro);
-	}
 	
 	private List<DepartamentoDTO> getAll() 
 	{
-		EmpleadoService empleadoService = new EmpleadoServiceImpl();
+		EmpleadoService empleadoService = new EmpleadoServiceImpl(new EmpleadoRepositoryImpl());
 		return departamentoRepository.findAll().stream()
 			   .map(x -> new DepartamentoDTO(x.getNombre(), x.getDescripcion(), empleadoService.exist(x.getEncargadoId()) ? empleadoService.findOne(x.getEncargadoId()) : null))
 			   .collect(Collectors.toList());
