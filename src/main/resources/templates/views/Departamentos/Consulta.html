@@ -49,8 +49,18 @@
 
 				<a class="btn btn-info" th:href="@{/departamentos/crear}">Crear
 					departamento</a>
+					
+				<div class="btn-group">
+							<button class="btn btn-success dropdown-toggle pull-right" data-toggle="dropdown"><i class="fa fa-bars"></i> Exportar Datos</button>
+							<ul class="dropdown-menu " role="menu">			
+								<li><a href="#" onClick ="$('#datos').tableExport({type:'excel',escape:'false'});"> <img src='/img/xls.png' width='24px'/> XLS</a></li>
+								<li><a href="#" onClick ="$('#datos').tableExport({type:'pdf',pdfFontSize:'7',escape:'false'});"> <img src='/img/pdf.png' width='24px'/> PDF</a></li>
+								
+								
+							</ul>
+						</div>	
 
-				<table class="table table-striped table-vcenter">
+				<table id="datos" class="table table-striped table-vcenter">
 					<thead>
 						<tr>
 							<th class="text-center">Id</th>

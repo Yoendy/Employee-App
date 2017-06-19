@@ -24,7 +24,14 @@
 	<script type="text/javascript" src="/app/utils.js" th:src="@{/app/utils.js}"></script>
 	
 	
-<script type="text/javascript" src="js/helpers/chart.js/dist/Chart.bundle.js"></script>
+<script type="text/javascript" src="/js/helpers/tableExport.jquery.plugin/tableExport.js" th:src="@{/js/helpers/tableExport.jquery.plugin/tableExport.js}"></script>
+<script type="text/javascript" src="/js/helpers/tableExport.jquery.plugin/jquery.base64.js" th:src="@{/js/helpers/tableExport.jquery.plugin/jquery.base64.js}"></script>
+<script type="text/javascript" src="/js/helpers/tableExport.jquery.plugin/html2canvas.js" th:src="@{/js/helpers/tableExport.jquery.plugin/html2canvas.js}"></script>
+<script type="text/javascript" src="/js/helpers/tableExport.jquery.plugin/jspdf/sprintf.js" th:src="@{/js/helpers/tableExport.jquery.plugin/jspdf/sprintf.js}"></script>
+<script type="text/javascript" src="/js/helpers/tableExport.jquery.plugin//jspdf/jspdf.js" th:src="@{/js/helpers/tableExport.jquery.plugin//jspdf/jspdf.js}"></script>
+<script type="text/javascript" src="/js/helpers/tableExport.jquery.plugin/jspdf/base64.js" th:src="@{/js/helpers/tableExport.jquery.plugin/jspdf/base64.js}"></script>
+
+<script type="text/javascript" src="/js/helpers/chart.js/dist/Chart.bundle.js"></script>
 <script type="text/javascript" src="/js/Dashboard.js" th:src="@{/js/Dashboard.js}"></script>
 
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
@@ -84,7 +91,7 @@
 					<!-- Sidebar Content -->
 					<div class="sidebar-content">
 						<!-- Brand -->
-						<a href="/home" class="sidebar-brand"> <i
+						<a href="/home"  th:href="@{/home}" class="sidebar-brand"> <i
 							class="gi gi-flash"></i><span class="sidebar-nav-mini-hide"><strong>Empleados</strong>
 						</span>
 						</a>
