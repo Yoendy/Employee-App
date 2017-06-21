@@ -37,6 +37,7 @@ $(function(){
 	puestosSalarios();
 	empleadosDepartamentos();
 	empleadosPuesto();
+	
 })
 
 
@@ -94,6 +95,8 @@ function puestosSalarios()
 			            });			        
 			        
 	            });
+	
+	setTimeout(puestosSalarios, 10000);
 }
 
 function empleadosDepartamentos()
@@ -142,6 +145,7 @@ function empleadosDepartamentos()
 
 			     
 	            });
+	setTimeout(empleadosDepartamentos, 10000);
 }
 
 function empleadosPuesto()
@@ -198,6 +202,7 @@ function empleadosPuesto()
 	            });
 			     
 	            });
+	setTimeout(empleadosPuesto, 10000);
 }
 
 
